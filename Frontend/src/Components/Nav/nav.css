@@ -1,0 +1,51 @@
+/* Nav.css */
+
+.home-ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  display: flex; /* Use flexbox to align items horizontally */
+  justify-content: space-around; /* Distribute space evenly */
+  background-color: #77bd97; /* Light gray background */
+}
+
+.home-li {
+  margin: 10px;
+}
+
+.home-li h1 {
+  font-size: 20px; /* Font size of the heading */
+  color: #007bff; /* Blue text color */
+  cursor: pointer; /* Pointer cursor on hover */
+}
+
+.home-li h1:hover {
+  color: #0056b3; /* Darker blue on hover */
+}
+
+.activehome-a {
+  text-decoration: none;
+}
+
+.home-ul img {
+  width: 150px; /* Adjust size as needed */
+  height: 90px;
+  display: flex;
+  margin: 0; /* Center the image and add some spacing */
+}
+.bt4 {
+  background-color:rgb(197, 49, 157) ;
+  color: black;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+
+.btn-group {
+  display: flex;
+  gap: 0px; /* Adjust this value to increase or decrease the space between the buttons */
+}
+

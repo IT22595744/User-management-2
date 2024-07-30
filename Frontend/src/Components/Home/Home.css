@@ -1,0 +1,5 @@
+.my-background-image {
+    background-image: url('./bgimage.jpeg'); /* Replace with your image path */
+    background-size: cover;
+    height: 100vh; /* Optional: Set height for full viewport coverage */
+  }
