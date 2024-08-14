@@ -72,46 +72,101 @@ app.post("/login",async(req,res)=>{
 });
 
 //pdf -------------
-const multer=require("multer");
-const storage=multer.diskStorage({
-    destination:function(req,file,cb){
-        cb(null,"./files");
-    },
-    filename:function(req,file,cb){
-        const uniqueSuffix=Date.now();
-        cb(null,uniqueSuffix+file.originalname);
-    },
-});
+// const multer=require("multer");
+// const storage=multer.diskStorage({
+//     destination:function(req,file,cb){
+//         cb(null,"./files");
+//     },
+//     filename:function(req,file,cb){
+//         const uniqueSuffix=Date.now();
+//         cb(null,uniqueSuffix+file.originalname);
+//     },
+// });
 
-//Insert PDF model part
+// //Insert PDF model part
+// require("./Model/Pdfmodel");
+// const pdfSchema=mongoose.model("pdfDetails");
+// const uplode=multer({storage});
+
+// app.post("/uploadfile",uplode.single("file"),async(req,res)=>{
+//     console.log(req.file);
+//     const title=req.body.title;
+//     const pdf=req.file.filename;
+
+//     try{
+//         await pdfSchema.create({title:title,pdf:pdf});
+//         console.log("Pdf Uploaded successfully");
+//         res.send({status:200});
+
+//     }catch(err){
+//         console.log(err);
+//         res.status(500).send({status:"error"});
+//     }
+// });
+
+// //next video
+// app.get('/getFile',async(req,res)=>{
+//     try{
+//         const data=await pdfSchema.find({});
+//         res.send({status:200,data:data});
+//     }catch(err){
+//         console.log(err);
+//         res.status(500).send({status:"error"});
+//     }
+// })
+
+//multer------------------------------
 require("./Model/Pdfmodel");
-const pdfSchema=mongoose.model("pdfDetails");
-const uplode=multer({storage});
+const pdfSchema=mongoose.model("PdfDetails");
 
-app.post("/uploadfile",uplode.single("file"),async(req,res)=>{
-    console.log(req.file);
-    const title=req.body.title;
-    const pdf=req.file.filename;
+const multer  = require('multer');
 
-    try{
-        await pdfSchema.create({title:title,pdf:pdf});
-        console.log("Pdf Uploaded successfully");
-        res.send({status:200});
-
-    }catch(err){
-        console.log(err);
-        res.status(500).send({status:"error"});
+//defining the function by copy paste from npm multer because to prevent uploaing files in the same name
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+    //saving the file in exact location(files)
+      cb(null, './files')
+    },
+    filename: function (req, file, cb) {
+    //saving the file with original date and time ,with original name
+      const uniqueSuffix = Date.now()
+      cb(null, uniqueSuffix + file.originalname)
     }
+  })
+  
+  //passing the storage function to the variable
+  const upload = multer({ storage: storage })
+//calling the api
+app.post("/upload-files",  upload.single("file"),async(req,res)=>{
+
+  const title=req.body.title;
+  const fileName=req.file.filename;
+  try{
+    await pdfSchema.create({title:title,pdf:fileName});
+    res.status(200).send("success");
+  } catch(error){
+    res.json({status:error})
+  }
 });
 
-//next video
-app.get('/getFile',async(req,res)=>{
+//get the files from mongodb directory
+app.get("/get-files",async(req,res)=>{
     try{
-        const data=await pdfSchema.find({});
-        res.send({status:200,data:data});
-    }catch(err){
-        console.log(err);
-        res.status(500).send({status:"error"});
+        pdfSchema.find({}).then((data)=>{
+            res.status(200).send({data:data})
+        });
+
+        // res.status(200).send({});
+    }catch(error){
+        res.json({status:error})
     }
 })
 
+//apis-------------------------------
+app.get('/',async(req,res)=>{
+    res.send("Success !!!!!!");
+});
+
+app.listen(3000,()=>{
+    console.log("server started");
+});
