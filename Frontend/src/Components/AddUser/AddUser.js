@@ -31,7 +31,7 @@ function AddUser() {
     sendRequest().then(()=>history('/userdetails'))
   }
   
-  //implementin the sendrequest function from above
+  //implementing the sendrequest function from above
   const sendRequest=async()=>{
     await axios.post("http://localhost:5000/users",{
       //module attribute name=name

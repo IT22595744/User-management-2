@@ -20,7 +20,7 @@ function Updateuser() {
         fetchHandler();
     },[id]);
     
-    //implementin the sendrequest function from above
+    //implementing the sendrequest function from above
     const sendRequest=async()=>{
         await axios
         .put(`http://localhost:5000/users/${id}`,{

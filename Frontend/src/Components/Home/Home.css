@@ -1,5 +1,32 @@
 .my-background-image {
-    background-image: url('./bgimage.jpeg'); /* Replace with your image path */
+    background-image: url('./bgimage.jpg'); /* Replace with your image path */
     background-size: cover;
-    height: 100vh; /* Optional: Set height for full viewport coverage */
+    position: -webkit-sticky; 
+    position: sticky;
   }
+
+.hed{
+  text-align: center;
+  font-size: 56px;
+  font-family:monospace;
+  font-weight:bolder;
+}  
+
+h6{
+  text-align: left;
+  width: 800px;
+  margin-left: 15px;
+}
+.image-container{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    
+}
+.userprofile-image {
+  width: 650px; /* Adjust the width as needed */
+  height: auto;
+  border-radius: 5%; /* Optional: If you want a circular image */
+  margin-top: -90px;
+}
+

@@ -64,19 +64,23 @@ function Users() {
     <div className="bg2">
         <Nav/>
       <h1>User Details Display Page</h1>
+     
       <input className="search" onChange={(e) => setSearchQuery(e.target.value)}
              type='text'
              name='search'
              placeholder='search user details'></input>
 
-       <button className="btn1" onClick={handlesearch}>Search</button>      
+       <button className="nav_btn_log" onClick={handlesearch}>Search</button>  
+       <div className='usercontainer'>    
       {/* calling the ComponentsRef where we want to start the downloading */}
       {noResults ?(
         <div>
           <p>No Users Found</p>
           </div>
       ):(
+        
       <div ref={ComponentsRef}>
+        
       {users && users.map((user,i)=>{
         console.log("userxyz",user)
         return (
@@ -85,10 +89,14 @@ function Users() {
       </div>
     )})}
     </div>
+    
     )}
-    <button className="btn2" onClick={handleprint}>Download Report</button>
-    <br></br>
-    <button className="btn3" onClick={handlesendReport}>Send Whatsapp Message</button>
+    <div className='btngroup'>
+    <button className="nav_btn_log" onClick={handleprint}>Download Report</button>
+    {/* <br></br> */}
+    <button className="nav_btn_regi" onClick={handlesendReport}>Send Whatsapp Message</button>
+    </div>
+    </div>
     </div>
   );
 }
