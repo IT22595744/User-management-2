@@ -24,7 +24,6 @@ mongoose.connect("mongodb+srv://admin:Hq4qpqrevI5qfWih@atlascluster.d1qd0xc.mong
 //If there is an error during the connection process, it catches the error and logs it to the console.
 
 
-
 //call register model
 //import the register model class
 require("./Model/Register");

@@ -25,13 +25,14 @@ function Users() {
 
   //implementing the downloading report function
   const ComponentsRef=useRef();
+  
   const handleprint=useReactToPrint({
     content:()=>ComponentsRef.current,
     //the report will be downloaded in this title
     DocumentTitle:"Users Report",
     //after report downloaded displaying alert msg
     onafterprint:()=>alert("Users Report Successfully Download !"),
-  }) ;
+  })
 
   //implementing the search functions
   const [searchQuery,setSearchQuery]=useState("");
@@ -39,10 +40,13 @@ function Users() {
 
   const handlesearch=()=>{
       fetchHandler().then((data) => {
+        // data.Users is an array of user objects.This filters the users based on the search query.
         const filteredUsers = data.Users.filter((user)=>
+          // Object.values(user).some((field) => ...): This checks if any of the user's fields match the search query.
           Object.values(user).some((field)=>
           field.toString().toLowerCase().includes(searchQuery.toLowerCase())  
           ))
+          // setUsers(filteredUsers): This updates the Users state with the filtered list of users
           setUsers(filteredUsers);
           setNoResults(filteredUsers.length === 0)
       });
