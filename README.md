@@ -30,6 +30,7 @@ The User Management System provides a web interface for managing user informatio
 | API | RESTful HTTP APIs, JSON |
 | Testing and debugging | Postman; Jest and Supertest if included in this repository |
 | Version control | Git, GitHub |
+| Email Configurations | Email.js
 
 ## Architecture
 
