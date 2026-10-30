@@ -12,7 +12,7 @@ The User Management System provides a web interface for managing user informatio
 
 - User registration and login — account creation and authentication workflows.
 - User management (CRUD) — create, view, update, and delete user records.
-- Contact us for built with email sending configuration through email.js
+- Contact us form built with email sending configuration through email.js
 - REST API integration — communication between the React frontend and Express backend.
 - MongoDB persistence — user information stored and managed using MongoDB.
 - JWT-based authentication — token-based authentication as implemented in the project.
